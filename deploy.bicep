@@ -2,7 +2,7 @@
 param location string = resourceGroup().location
 
 @description('Unique name for the Azure Database for PostgreSQL.')
-param serverName string = 'psql-learn-${uniqueString(subscription().tags['LabInstance'])}'
+param serverName string = 'psql-learn-${uniqueString(subscription().tags.LabInstance)}'
 
 @description('The version of PostgreSQL to use.')
 param postgresVersion string = '16'
@@ -17,10 +17,10 @@ param adminLogin string = 'pgAdmin'
 param adminLoginPassword string
 
 @description('Unique name for the Azure OpenAI service.')
-param azureOpenAIServiceName string = 'oai-learn-${uniqueString(subscription().tags['LabInstance'])}'
+param azureOpenAIServiceName string = 'oai-learn-${uniqueString(subscription().tags.LabInstance)}'
 
 @description('Unique name for the Azure AI Language service account.')
-param languageServiceName string = 'lang-learn-${uniqueString(subscription().tags['LabInstance'])}'
+param languageServiceName string = 'lang-learn-${uniqueString(subscription().tags.LabInstance)}'
 
 @description('Restore the service instead of creating a new instance. This is useful if you previously soft-delted the service and want to restore it. If you are restoring a service, set this to true. Otherwise, leave this as false.')
 param restore bool = false

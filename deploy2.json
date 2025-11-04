@@ -5,6 +5,13 @@
         "serverfarms_az400m03l08_sp1_name": {
             "defaultValue": "az400m03l08-sp1",
             "type": "String"
+        },
+        "location": {
+            "type": "String",
+            "defaultValue": "eastus",
+            "metadata": {
+                "description": "Location for the App Service Plan"
+            }
         }
     },
     "variables": {},
@@ -13,7 +20,7 @@
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2024-11-01",
             "name": "az400m03l08-sp1",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "sku": {
                 "name": "S1",
                 "tier": "Standard",

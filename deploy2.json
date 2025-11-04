@@ -2,16 +2,9 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "serverfarms_az400m03l07_sp1_name": {
-            "defaultValue": "az400m03l08-RG",
+        "serverfarms_az400m03l08_sp1_name": {
+            "defaultValue": "az400m03l08-sp1",
             "type": "String"
-        },
-        "location": {
-            "type": "String",
-            "defaultValue": "eastus",
-            "metadata": {
-                "description": "Location for the App Service Plan"
-            }
         }
     },
     "variables": {},
@@ -19,8 +12,8 @@
         {
             "type": "Microsoft.Web/serverfarms",
             "apiVersion": "2024-11-01",
-            "name": "[parameters('serverfarms_az400m03l07_sp1_name')]",
-            "location": "[parameters('location')]",
+            "name": "[parameters('serverfarms_az400m03l08_sp1_name')]",
+            "location": "[resourceGroup().location]",
             "sku": {
                 "name": "S1",
                 "tier": "Standard",

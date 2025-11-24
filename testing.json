@@ -1,0 +1,51 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adminUsers": {
+      "type": "string",
+      "metadata": {
+        "description": "List of admin users for the Fabric capacity."
+      }
+    },
+    "capacityName": {
+      "type": "string"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "eastus",
+      "metadata": {
+        "description": "Azure region where the Fabric capacity will be deployed."
+      }
+    },
+    "resourceGroupName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the resource group where the Fabric capacity will be created."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Fabric/capacities",
+      "apiVersion": "2023-11-01",
+      "name": "[parameters('capacityName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "administration": {
+          "members": [ "[parameters('adminUsers')]" ]
+      }
+    },
+      "sku": {
+        "name": "F4",
+        "tier": "Fabric"
+      }
+    }
+  ],
+  "outputs": {
+    "fabricCapacityId": {
+      "type": "string",
+      "value": "[resourceId('Microsoft.Fabric/capacities', parameters('capacityName'))]"
+    }
+  }
+}
